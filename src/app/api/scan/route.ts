@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { scanUrl } from '@/lib/scanner';
 import { generateVerdict } from '@/lib/verdict';
+import { generateAIDescription } from '@/lib/ai';
 import { prisma } from '@/lib/prisma';
 import type { ApiResponse, ScanResult } from '@/lib/types';
 
@@ -82,6 +83,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
         const findings = await scanUrl(url);
         const durationMs = Date.now() - startTime;
         const result = generateVerdict(url, findings, durationMs);
+
+        // Generate AI description (non-blocking)
+        const aiDescription = await generateAIDescription(url, findings);
+        if (aiDescription) {
+            result.aiDescription = aiDescription;
+        }
 
         // Store scan result
         try {

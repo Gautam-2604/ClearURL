@@ -36,36 +36,42 @@ export interface ScanFindings {
   finalUrl: string;
   title: string;
   description: string;
-  
+
   // SSL/Security
   isHttps: boolean;
   hasValidCert: boolean;
-  
+
   // Meta tags
   metaTags: MetaTag[];
   hasOpenGraph: boolean;
   hasTwitterCard: boolean;
-  
+
   // Links
   outboundLinks: OutboundLink[];
   totalLinks: number;
   externalLinks: number;
   suspiciousLinks: number;
-  
+
   // Redirects
   redirectChain: RedirectInfo[];
   hasMultipleRedirects: boolean;
-  
+
   // Risk factors
   riskFactors: RiskFactor[];
-  
+
   // Hidden elements
   hiddenIframes: number;
   hiddenForms: number;
   obfuscatedScripts: number;
-  
+
   // Timing
   responseTimeMs: number;
+}
+
+export interface AIDescription {
+  description: string;
+  targetAudience: string[];
+  useCases: string[];
 }
 
 export interface ScanResult {
@@ -76,6 +82,7 @@ export interface ScanResult {
   findings: ScanFindings;
   durationMs: number;
   scannedAt: string;
+  aiDescription?: AIDescription;
 }
 
 export interface ApiResponse<T> {
