@@ -1,0 +1,31 @@
+// Prisma schema for Link Checker application
+// Using Neon PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Scan {
+  id          String   @id @default(cuid())
+  url         String
+  verdict     String   // "safe" | "caution" | "risk"
+  score       Int      // 0-100 safety score
+  findings    Json     // Detailed findings object
+  durationMs  Int      @map("duration_ms") // Scan duration in milliseconds
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("scans")
+}
+
+model Metric {
+  id         String   @id @default(cuid())
+  eventType  String   @map("event_type") // "scan_started", "scan_completed", "scan_failed"
+  metadata   Json?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("metrics")
+}
