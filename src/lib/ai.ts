@@ -17,8 +17,8 @@ export async function generateAIDescription(
 ): Promise<AIDescriptionResult | null> {
     const apiKey = process.env.OPENROUTER_API_KEY;
 
-    if (!apiKey) {
-        console.warn('OpenRouter API key not configured. Skipping AI description.');
+    // Skip silently if API key is not configured
+    if (!apiKey || apiKey.trim() === '') {
         return null;
     }
 
@@ -53,7 +53,7 @@ Respond in JSON format only:
                 'X-Title': 'Link Checker',
             },
             body: JSON.stringify({
-                model: 'meta-llama/llama-3.2-3b-instruct:free',
+                model: 'liquid/lfm-2.5-1.2b-thinking:free',
                 messages: [
                     {
                         role: 'system',

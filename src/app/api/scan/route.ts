@@ -75,8 +75,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
                 },
             });
         } catch {
-            // Don't fail if metrics can't be recorded
-            console.warn('Failed to record scan_started metric');
+            // Database is optional - silently skip if not configured
         }
 
         // Perform the scan
@@ -115,8 +114,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
                 },
             });
         } catch {
-            // Don't fail if storage fails
-            console.warn('Failed to store scan result');
+            // Database is optional - silently skip if not configured
         }
 
         return NextResponse.json({ success: true, data: result });
@@ -133,7 +131,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
                 },
             });
         } catch {
-            console.warn('Failed to record scan_failed metric');
+            // Database is optional
         }
 
         return NextResponse.json(

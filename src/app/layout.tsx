@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Link Checker | URL Safety Scanner",
-  description: "Analyze the legitimacy of any URL by inspecting pages, outbound links, meta tags, redirects, and hidden elements. Get a clear, explainable safety verdict.",
-  keywords: ["link checker", "URL scanner", "phishing detection", "website safety", "security scanner"],
-  authors: [{ name: "Link Checker" }],
+  title: "ClearURL | AI-Powered URL Safety Scanner",
+  description: "Verify any link before you click. Instantly detect phishing, malware, and suspicious elements with AI-powered analysis. Get a clear safety verdict.",
+  keywords: ["url scanner", "link checker", "phishing detection", "website safety", "security scanner", "malware detection", "AI security"],
+  authors: [{ name: "ClearURL" }],
   openGraph: {
-    title: "Link Checker | URL Safety Scanner",
-    description: "Analyze the legitimacy of any URL and get a clear safety verdict.",
+    title: "ClearURL | AI-Powered URL Safety Scanner",
+    description: "Verify any link before you click. Instantly detect phishing and malware with AI-powered analysis.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Link Checker | URL Safety Scanner",
-    description: "Analyze the legitimacy of any URL and get a clear safety verdict.",
+    title: "ClearURL | AI-Powered URL Safety Scanner",
+    description: "Verify any link before you click. Instantly detect phishing and malware with AI-powered analysis.",
   },
 };
 
