@@ -9,6 +9,7 @@ export function calculateScore(findings: ScanFindings): number {
     
     
 
+
     // Deduct for each risk factor based on weight
     for (const risk of findings.riskFactors) {
         if (risk.found) {
