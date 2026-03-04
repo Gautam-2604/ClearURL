@@ -7,6 +7,7 @@ import type { ScanFindings, ScanResult } from './types';
 export function calculateScore(findings: ScanFindings): number {
     let score = 100;
     
+    
 
     // Deduct for each risk factor based on weight
     for (const risk of findings.riskFactors) {
